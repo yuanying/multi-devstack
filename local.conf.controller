@@ -28,9 +28,33 @@ enable_service q-l3
 enable_service q-meta
 enable_service neutron
 
+enable_service s-proxy
+enable_service s-object
+enable_service s-container
+enable_service s-account
+
+# Disable LBaaS(v1) service
+disable_service q-lbaas
+
+# Enable LBaaS(v2) services
+enable_service q-lbaasv2
+enable_service octavia
+enable_service o-cw
+enable_service o-hk
+enable_service o-hm
+enable_service o-api
+
+enable_plugin neutron-lbaas https://git.openstack.org/openstack/neutron-lbaas
+enable_plugin octavia https://git.openstack.org/openstack/octavia
+
+VOLUME_BACKING_FILE_SIZE=20G
+
 enable_plugin heat https://git.openstack.org/openstack/heat
-enable_plugin senlin https://git.openstack.org/openstack/senlin
 
 SCREEN_LOGDIR=$DEST/logs/screen
 LOGFILE=$DEST/logs/stack.sh.log
 LOGDAYS=2
+
+[[post-config|/etc/neutron/dhcp_agent.ini]]
+[DEFAULT]
+dnsmasq_config_file = /etc/neutron/dnsmasq.conf
