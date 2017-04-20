@@ -14,10 +14,11 @@ MYSQL_PASSWORD=stackdb
 RABBIT_PASSWORD=stackqueue
 SERVICE_PASSWORD=$ADMIN_PASSWORD
 SERVICE_TOKEN=tokentoken
+DATABASE_TYPE=mysql
 
 # Services
 disable_all_services
-ENABLED_SERVICES=n-cpu,rabbit,neutron,q-agt,n-api-meta,c-vol
+ENABLED_SERVICES=n-cpu,rabbit,neutron,q-agt,n-api-meta,c-vol,placement-client
 
 FLOATING_RANGE=172.16.12.0/24
 FIXED_RANGE=10.4.128.0/20
