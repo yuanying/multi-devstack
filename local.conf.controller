@@ -47,6 +47,10 @@ enable_service o-api
 enable_plugin neutron-lbaas https://git.openstack.org/openstack/neutron-lbaas
 enable_plugin octavia https://git.openstack.org/openstack/octavia
 
+OCTAVIA_MGMT_SUBNET=172.16.13.0/24
+OCTAVIA_MGMT_SUBNET_START=172.16.13.2
+OCTAVIA_MGMT_SUBNET_END=172.16.13.200
+
 VOLUME_BACKING_FILE_SIZE=20G
 
 enable_plugin heat https://git.openstack.org/openstack/heat
