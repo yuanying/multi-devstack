@@ -18,7 +18,7 @@ DATABASE_TYPE=mysql
 
 # Services
 disable_all_services
-ENABLED_SERVICES=n-cpu,rabbit,neutron,q-agt,n-api-meta,c-vol,placement-client
+ENABLED_SERVICES=n-cpu,rabbit,neutron,q-agt,c-vol,placement-client
 
 FLOATING_RANGE=172.16.12.0/24
 FIXED_RANGE=10.4.128.0/20
@@ -27,9 +27,9 @@ FIXED_NETWORK_SIZE=4096
 ## Neutron options
 PUBLIC_INTERFACE=ens3
 FLAT_INTERFACE=ens3
-ENABLE_TENANT_TUNNELS=True
-Q_PLUGIN=ml2
-Q_ML2_TENANT_NETWORK_TYPE=vxlan
+#ENABLE_TENANT_TUNNELS=True
+#Q_PLUGIN=ml2
+#Q_ML2_TENANT_NETWORK_TYPE=vxlan
 
 NOVA_VNC_ENABLED=True
 NOVNCPROXY_URL="http://$SERVICE_HOST:6080/vnc_auto.html"
@@ -39,3 +39,19 @@ VNCSERVER_PROXYCLIENT_ADDRESS=$VNCSERVER_LISTEN
 SCREEN_LOGDIR=$DEST/logs/screen
 LOGFILE=$DEST/logs/stack.sh.log
 LOGDAYS=2
+
+[[post-config|/etc/neutron/neutron.conf]]
+[DEFAULT]
+logging_exception_prefix =
+logging_debug_format_suffix = from (pid=%(process)d) %(funcName)s %(pathname)s:%(lineno)d
+logging_default_format_string = %(asctime)s.%(msecs)03d %(process)d %(levelname)s %(name)s %(instance)s%(message)s
+logging_context_format_string = %(asctime)s.%(msecs)03d %(process)d %(levelname)s %(name)s [%(request_id)s %(project_id)s %(user_id)s] %(instance)s%(message)s
+log_dir = /opt/stack/logs/neutron
+
+[[post-config|/etc/nova/nova.conf]]
+[DEFAULT]
+logging_exception_prefix =
+logging_debug_format_suffix = from (pid=%(process)d) %(funcName)s %(pathname)s:%(lineno)d
+logging_default_format_string = %(asctime)s.%(msecs)03d %(process)d %(levelname)s %(name)s %(instance)s%(message)s
+logging_context_format_string = %(asctime)s.%(msecs)03d %(process)d %(levelname)s %(name)s [%(request_id)s %(project_id)s %(user_id)s] %(instance)s%(message)s
+log_dir = /opt/stack/logs/nova

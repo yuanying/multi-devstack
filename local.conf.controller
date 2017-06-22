@@ -9,9 +9,9 @@ FIXED_NETWORK_SIZE=4096
 PUBLIC_NETWORK_GATEWAY=172.16.12.1
 
 # Neutron
-ENABLE_TENANT_TUNNELS=True
-Q_PLUGIN=ml2
-Q_ML2_TENANT_NETWORK_TYPE=vxlan
+#ENABLE_TENANT_TUNNELS=True
+#Q_PLUGIN=ml2
+#Q_ML2_TENANT_NETWORK_TYPE=vxlan
 
 ADMIN_PASSWORD=openstack
 MYSQL_PASSWORD=stackdb
@@ -62,3 +62,75 @@ LOGDAYS=2
 [[post-config|/etc/neutron/dhcp_agent.ini]]
 [DEFAULT]
 dnsmasq_config_file = /etc/neutron/dnsmasq.conf
+
+[[post-config|/etc/nova/nova.conf]]
+[DEFAULT]
+logging_exception_prefix =
+logging_debug_format_suffix = from (pid=%(process)d) %(funcName)s %(pathname)s:%(lineno)d
+logging_default_format_string = %(asctime)s.%(msecs)03d %(process)d %(levelname)s %(name)s %(instance)s%(message)s
+logging_context_format_string = %(asctime)s.%(msecs)03d %(process)d %(levelname)s %(name)s [%(request_id)s %(project_id)s %(user_id)s] %(instance)s%(message)s
+log_dir = /opt/stack/logs/nova
+
+[[post-config|/etc/glance/glance-api.conf]]
+[DEFAULT]
+logging_exception_prefix =
+logging_debug_format_suffix = from (pid=%(process)d) %(funcName)s %(pathname)s:%(lineno)d
+logging_default_format_string = %(asctime)s.%(msecs)03d %(process)d %(levelname)s %(name)s %(instance)s%(message)s
+logging_context_format_string = %(asctime)s.%(msecs)03d %(process)d %(levelname)s %(name)s [%(request_id)s] %(instance)s%(message)s
+log_dir = /opt/stack/logs/glance
+
+[[post-config|/etc/glance/glance-cache.conf]]
+[DEFAULT]
+logging_exception_prefix =
+logging_debug_format_suffix = from (pid=%(process)d) %(funcName)s %(pathname)s:%(lineno)d
+logging_default_format_string = %(asctime)s.%(msecs)03d %(process)d %(levelname)s %(name)s %(instance)s%(message)s
+logging_context_format_string = %(asctime)s.%(msecs)03d %(process)d %(levelname)s %(name)s [%(request_id)s] %(instance)s%(message)s
+log_dir = /opt/stack/logs/glance
+
+[[post-config|/etc/glance/glance-registry.conf]]
+[DEFAULT]
+logging_exception_prefix =
+logging_debug_format_suffix = from (pid=%(process)d) %(funcName)s %(pathname)s:%(lineno)d
+logging_default_format_string = %(asctime)s.%(msecs)03d %(process)d %(levelname)s %(name)s %(instance)s%(message)s
+logging_context_format_string = %(asctime)s.%(msecs)03d %(process)d %(levelname)s %(name)s [%(request_id)s] %(instance)s%(message)s
+log_dir = /opt/stack/logs/glance
+
+[[post-config|/etc/heat/heat.conf]]
+[DEFAULT]
+logging_exception_prefix =
+logging_debug_format_suffix = from (pid=%(process)d) %(funcName)s %(pathname)s:%(lineno)d
+logging_default_format_string = %(asctime)s.%(msecs)03d %(process)d %(levelname)s %(name)s %(instance)s%(message)s
+logging_context_format_string = %(asctime)s.%(msecs)03d %(process)d %(levelname)s %(name)s [%(request_id)s] %(instance)s%(message)s
+log_dir = /opt/stack/logs/heat
+
+[[post-config|/etc/keystone/keystone.conf]]
+[DEFAULT]
+logging_exception_prefix =
+logging_debug_format_suffix = from (pid=%(process)d) %(funcName)s %(pathname)s:%(lineno)d
+logging_default_format_string = %(asctime)s.%(msecs)03d %(process)d %(levelname)s %(name)s %(instance)s%(message)s
+logging_context_format_string = %(asctime)s.%(msecs)03d %(process)d %(levelname)s %(name)s [%(request_id)s] %(instance)s%(message)s
+log_dir = /opt/stack/logs/keystone
+
+[[post-config|/etc/neutron/neutron.conf]]
+[DEFAULT]
+logging_exception_prefix =
+logging_debug_format_suffix = from (pid=%(process)d) %(funcName)s %(pathname)s:%(lineno)d
+logging_default_format_string = %(asctime)s.%(msecs)03d %(process)d %(levelname)s %(name)s %(instance)s%(message)s
+logging_context_format_string = %(asctime)s.%(msecs)03d %(process)d %(levelname)s %(name)s [%(request_id)s %(project_id)s %(user_id)s] %(instance)s%(message)s
+log_dir = /opt/stack/logs/neutron
+
+[[post-config|/etc/cinder/cinder.conf]]
+[DEFAULT]
+logging_exception_prefix =
+logging_debug_format_suffix = from (pid=%(process)d) %(funcName)s %(pathname)s:%(lineno)d
+logging_default_format_string = %(asctime)s.%(msecs)03d %(process)d %(levelname)s %(name)s %(instance)s%(message)s
+logging_context_format_string = %(asctime)s.%(msecs)03d %(process)d %(levelname)s %(name)s [%(request_id)s %(project_id)s %(user_id)s] %(instance)s%(message)s
+log_dir = /opt/stack/logs/cinder
+
+[[post-config|/etc/octavia/octavia.conf]]
+[DEFAULT]
+logging_exception_prefix =
+logging_debug_format_suffix = from (pid=%(process)d) %(funcName)s %(pathname)s:%(lineno)d
+logging_default_format_string = %(asctime)s.%(msecs)03d %(process)d %(levelname)s %(name)s %(instance)s%(message)s
+logging_context_format_string = %(asctime)s.%(msecs)03d %(process)d %(levelname)s %(name)s [%(request_id)s %(project_id)s %(user_id)s] %(instance)s%(message)s
+log_dir = /opt/stack/logs/octavia
