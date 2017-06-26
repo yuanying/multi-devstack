@@ -34,6 +34,6 @@ docker run -ti -d \
            --name logstash \
            --hostname $(hostname) \
            -v /opt/stack/logs:/opt/stack/logs \
-           -v ${script_dir}/logstash/config:/usr/share/logstash/config \
-           -v ${script_dir}/logstash/pipeline:/usr/share/logstash/pipeline \
+           -v ${script_dir}/temp/config:/usr/share/logstash/config \
+           -v ${script_dir}/temp/pipeline:/usr/share/logstash/pipeline \
            docker.elastic.co/logstash/logstash:5.3.0
