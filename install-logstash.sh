@@ -26,7 +26,7 @@ sed -i='' -e "s|__ES_USER__|${ES_USER}|g" ${script_dir}/temp/config/logstash.yml
 sed -i='' -e "s|__ES_PASSWORD__|${ES_PASSWORD}|g" ${script_dir}/temp/config/logstash.yml
 
 
-docker run -ti --rm -d \
+docker run -ti -d \
            --name logstash \
            --hostname $(hostname) \
            -v /opt/stack/logs:/opt/stack/logs \
