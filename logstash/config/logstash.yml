@@ -1,0 +1,6 @@
+
+http.host: "0.0.0.0"
+path.config: /usr/share/logstash/pipeline
+xpack.monitoring.elasticsearch.url: __ES_URL__
+xpack.monitoring.elasticsearch.username: __ES_USER__
+xpack.monitoring.elasticsearch.password: __ES_PASSWORD__

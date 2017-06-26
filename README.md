@@ -18,7 +18,9 @@ git clone https://git.openstack.org/openstack-dev/devstack
 cd devstack
 ```
 
-## Log
+## Logstash
 
--   /etc/octavia/octavia.conf
--   /etc/swift/swift.conf
+```bash
+sudo ip route add 10.254.0.0/16 via 192.168.201.101
+sudo ES_URL='http://10.254.0.125:9200' ./install-logstash.sh
+```
