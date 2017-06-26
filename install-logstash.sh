@@ -21,14 +21,15 @@ echo
 rm -rf ${script_dir}/temp
 cp -rp ${script_dir}/logstash ${script_dir}/temp
 
-sed -i='' -e "s|__ES_URL__|${ES_URL}|g" ${script_dir}/temp/config/logstash.yml
-sed -i='' -e "s|__ES_USER__|${ES_USER}|g" ${script_dir}/temp/config/logstash.yml
-sed -i='' -e "s|__ES_PASSWORD__|${ES_PASSWORD}|g" ${script_dir}/temp/config/logstash.yml
+sed -i='.bak' -e "s|__ES_URL__|${ES_URL}|g" ${script_dir}/temp/config/logstash.yml
+sed -i='.bak' -e "s|__ES_USER__|${ES_USER}|g" ${script_dir}/temp/config/logstash.yml
+sed -i='.bak' -e "s|__ES_PASSWORD__|${ES_PASSWORD}|g" ${script_dir}/temp/config/logstash.yml
 
-sed -i='' -e "s|__ES_URL__|${ES_URL}|g" ${script_dir}/temp/pipeline/openstack.conf
-sed -i='' -e "s|__ES_USER__|${ES_USER}|g" ${script_dir}/temp/pipeline/openstack.conf
-sed -i='' -e "s|__ES_PASSWORD__|${ES_PASSWORD}|g" ${script_dir}/temp/pipeline/openstack.conf
+sed -i='.bak' -e "s|__ES_URL__|${ES_URL}|g" ${script_dir}/temp/pipeline/openstack.conf
+sed -i='.bak' -e "s|__ES_USER__|${ES_USER}|g" ${script_dir}/temp/pipeline/openstack.conf
+sed -i='.bak' -e "s|__ES_PASSWORD__|${ES_PASSWORD}|g" ${script_dir}/temp/pipeline/openstack.conf
 
+rm ${script_dir}/temp/**/*.bak
 
 docker run -ti -d \
            --name logstash \
