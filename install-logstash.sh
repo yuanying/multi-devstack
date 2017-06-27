@@ -25,9 +25,9 @@ sed -i='.bak' -e "s|__ES_URL__|${ES_URL}|g" ${script_dir}/temp/config/logstash.y
 sed -i='.bak' -e "s|__ES_USER__|${ES_USER}|g" ${script_dir}/temp/config/logstash.yml
 sed -i='.bak' -e "s|__ES_PASSWORD__|${ES_PASSWORD}|g" ${script_dir}/temp/config/logstash.yml
 
-sed -i='.bak' -e "s|__ES_URL__|${ES_URL}|g" ${script_dir}/temp/pipeline/openstack.conf
-sed -i='.bak' -e "s|__ES_USER__|${ES_USER}|g" ${script_dir}/temp/pipeline/openstack.conf
-sed -i='.bak' -e "s|__ES_PASSWORD__|${ES_PASSWORD}|g" ${script_dir}/temp/pipeline/openstack.conf
+sed -i='.bak' -e "s|__ES_URL__|${ES_URL}|g" ${script_dir}/temp/pipeline/99-output.conf
+sed -i='.bak' -e "s|__ES_USER__|${ES_USER}|g" ${script_dir}/temp/pipeline/99-output.conf
+sed -i='.bak' -e "s|__ES_PASSWORD__|${ES_PASSWORD}|g" ${script_dir}/temp/pipeline/99-output.conf
 
 rm ${script_dir}/temp/**/*.bak
 
